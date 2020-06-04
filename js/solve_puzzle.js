@@ -26,7 +26,7 @@ function task_select() {
     if (input == 2) {
       console.log("Вы выбрали генерацию данных");
       final = gen.generate_final(size);
-      gen.generate_puzzles(final,18,0,15);
+      gen.generate_puzzles(final,12,0,15);
       console.log("Данные сгенерированы!");
       rl.close();
     }
@@ -185,7 +185,7 @@ function type_choose() {
 function deep_analyze(arr, final, N_gen, n, m, p_c, p_m, s, iter, type, func) {
   let data = []; let min_rate = 1; let i = 0;
   let add_data = []; let res = []; let MPD = 0;
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < arr.length; i++) {
     gen.save_puzzle(arr[i],'cur_puzzle.txt',true);
     MPD = alg.MD(arr[i],final) + alg.PD(arr[i],final);
     fs.appendFileSync('./aux_data/all_metrixes.txt', MPD + '\n');
@@ -235,6 +235,7 @@ function alg_analyze(arr, final, N_gen, n, m, p_c, p_m, s, attempts, type, func,
     gen.generate_new(arr,len);
     arr = read.read_puzzle('./aux_data/data.txt');
   }
+  let pr_data = "";
   for (let i = 0; i < attempts; i++) {
     start = new Date;
     if (alg.solution_check(arr, final) != true)
@@ -244,7 +245,8 @@ function alg_analyze(arr, final, N_gen, n, m, p_c, p_m, s, attempts, type, func,
     console.log("Время: " + diff);
     console.log("Длина: " + solution.length);
     console.log("Вычислено задач: " + (i+1));
-    fs.appendFileSync('./aux_data/backup.txt',diff + ' ' + solution.length);
+    pr_data = diff + ' ' + solution.length + "\n";
+    fs.appendFileSync('./aux_data/backup.txt',pr_data);
     time.push(diff);
     console.log("Текущее среднее время работы: " + time.reduce(function(a,b) { return a+b; })/time.length + " мс");
     if (solution != 0)

@@ -44,7 +44,7 @@ function generate_puzzles(arr,init_dept,final_dept,amount) {
     }
   }
   let data = puzzle_arr.join('\n\n');
-  fs.writeFileSync('./aux_data/'+dir,data);
+  fs.writeFileSync('./aux_data/'+dir,data+"\n");
   fs.writeFileSync('./aux_data/analyze_'+dir,'{' + analyze_arr.join(',') + '};');
 }
 
