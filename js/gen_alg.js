@@ -23,7 +23,7 @@ function genetic_algorithm(arr, final, N_gen, n, m, p_c, p_m, s, type, func) { /
       if (chromosomes_info.sol == 1) {
         return chromosomes_info;
       }
-      chromosomes_info = fitness_count(chromosomes_info,final, func);
+      chromosomes_info = fitness_count(chromosomes_info,final,func);
       chromosomes_info = probabily_count(chromosomes_info);
       old_chromosomes = save_old(chromosomes_info);
       chromosomes_info = selection(chromosomes_info, s);
@@ -595,7 +595,5 @@ function mutation(chr_info, p_m, type) { // Выполнение операци�
 
 module.exports = {
   genetic_algorithm: genetic_algorithm,
-  solution_check: solution_check,
-  MD: MD,
-  PD: PD
+  solution_check: solution_check
 }

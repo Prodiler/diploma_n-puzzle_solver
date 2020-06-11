@@ -187,8 +187,6 @@ function deep_analyze(arr, final, N_gen, n, m, p_c, p_m, s, iter, type, func) {
   let add_data = []; let res = []; let MPD = 0;
   for (let i = 0; i < arr.length; i++) {
     gen.save_puzzle(arr[i],'cur_puzzle.txt',true);
-    MPD = alg.MD(arr[i],final) + alg.PD(arr[i],final);
-    fs.appendFileSync('./aux_data/all_metrixes.txt', MPD + '\n');
     res = alg_analyze(arr[i], final, N_gen, n, m, p_c, p_m, s, iter, type, func, i, 0, 1);
     fs.appendFileSync('./analysis_res/deep_data.txt', res.main_info.join(' ').replace(/\./g,',') + '\n')
     data.push(res.main_info); add_data.push(res.add_info.join('\n'));

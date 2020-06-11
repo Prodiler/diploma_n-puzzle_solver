@@ -14,7 +14,7 @@ function data_count() {
     variable.indexOf('i') != -1 ? type = 't' : type = 'l';
     counted_obj[variable] = order(obj[variable],type).map(function(elem,ind,arr) { return elem/arr.length; })
   }
-  fs.writeFileSync('./analysis_1/finished_data.json',JSON.stringify(counted_obj));
+  fs.writeFileSync('./analysis_1/finished_data.json', JSON.stringify(counted_obj));
   fs.writeFileSync('./analysis_1/mean_disp_data.json', JSON.stringify(mean_disp_obj))
   let pr_data = form_pretty(counted_obj);
   fs.writeFileSync('./analysis_1/pretty_data.txt', pr_data)
@@ -63,9 +63,4 @@ function order(param, cmp_t) {
     }
   }
   return counts;
-}
-
-
-module.exports = {
-
 }
